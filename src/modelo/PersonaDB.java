@@ -70,14 +70,14 @@ public class PersonaDB extends Persona {
     }
 
     public boolean actualizar() {
-        String sql = "UPDATE \"Persona\" SET  ";
+         String sql = "UPDATE \"Persona\" SET  ";
 
         sql += "nombres='" + getNombres() + "'";
         sql += ", apellidos='" + getApellidos() + "'";
         sql += ", correo='" + getCorreo() + "'";
         sql += ", domicilio= '" + getDomicilio() + "'";
-        sql += ", telefono='" + getTelefono()+  "'";
-        sql += ", sexo=" + getSexo();
+        sql += ", telefono='" + getTelefono() ;
+        sql += ", sexo=" + getSexo()+ "'";
         sql += "WHERE idpersona = '" + getIdpersona() + "' ";
 
         if (conecta.noquery(sql) == null) {

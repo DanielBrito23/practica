@@ -30,9 +30,9 @@ import vista.PersonaVista;
  * @author LENOVO
  */
 public class personaControlador {
+
     private final PersonaDB modelo;
     private final PersonaVista vista;
-     
 
     public personaControlador(PersonaDB modelo, PersonaVista vista) {
         this.modelo = modelo;
@@ -49,28 +49,14 @@ public class personaControlador {
         return vista;
     }
 
-    
-
     public void iniciaControl() {
-//        vista.getBtn_actualizar.addActionListener(e -> cargarLista());
-//        vista.getBtn_nuevo().addActionListener(e -> muestra_dialogo(0));
-//        vista.getBtn_editar().addActionListener(e -> muestra_dialogo(1));
-//        vista.getBtn_cancelar1().addActionListener(e-> cancelar());
-//        vista.getBtn_crear1().addActionListener(e -> insertarPersona());
-//        vista.getBtn_eliminar().addActionListener(e -> eliminador());     
-//        vista.getTxt_buscar().addKeyListener(busqueda());
-//        vista.getBtn_buscarFoto().addActionListener(e-> agregar_foto());
-//        vista.getBtn_imprimir().addActionListener(e-> imprimir());
-       
-        vista.getBtnGuardar().addActionListener(e-> insertarPersona());
-        vista.getBtnEditar().addActionListener(e-> Editar());
-        vista.getBtnEliminar().addActionListener(e-> eliminador());
-        vista.getBtn_guardaredicion().addActionListener(e-> guardaractualizacion());
+
+        vista.getBtnGuardar().addActionListener(e -> insertarPersona());
+        vista.getBtnEditar().addActionListener(e -> Editar());
+        vista.getBtnEliminar().addActionListener(e -> eliminador());
+        vista.getBtn_guardaredicion().addActionListener(e -> guardaractualizacion());
         cargarLista();
     }
-
-
-    
 
     public void eliminador() {
         int fila_seleccionada = vista.getTabla().getSelectedRow();
@@ -92,31 +78,25 @@ public class personaControlador {
         cargarLista();
     }
 
-
     private void Editar() {
-        
-            int fila_seleccionada = vista.getTabla().getSelectedRow();
-            if (fila_seleccionada == -1) {
-                JOptionPane.showMessageDialog(null, "Seleccione una fila");
-            } else {
 
-                vista.getTxtCedula().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 0));
-                vista.getTxtNombre().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 1));
-                vista.getTxtApellido().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 2));
-               vista.getTxtCorreo().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 3));
-                vista.getTxtDomicilio().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 4));
-                 vista.getTxtCelular().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 5));
-              vista.getComboSexo().addItem((String) vista.getTabla().getValueAt(fila_seleccionada, 6));
-              
-               
-            }
-            cargarLista();
+        int fila_seleccionada = vista.getTabla().getSelectedRow();
+        if (fila_seleccionada == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {
+
+            vista.getTxtCedula().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 0));
+            vista.getTxtNombre().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 1));
+            vista.getTxtApellido().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 2));
+            vista.getTxtCorreo().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 3));
+            vista.getTxtDomicilio().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 4));
+            vista.getTxtCelular().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 5));
+            vista.getComboSexo().addItem((String) vista.getTabla().getValueAt(fila_seleccionada, 6));
+
         }
-        //vista.getDlgPersona().setVisible(true);
-    
-        
+        vista.getTxtCedula().enable(false);
 
-    
+    }
 
     private void cargarLista() {
         DefaultTableModel modeloTabla;
@@ -124,7 +104,7 @@ public class personaControlador {
         for (int i = vista.getTabla().getRowCount() - 1; i >= 0; i--) {
             modeloTabla.removeRow(i);
         }
-            List<Persona> lista = modelo.listaPersonas();
+        List<Persona> lista = modelo.listaPersonas();
         int columnas = modeloTabla.getColumnCount();
         for (int i = 0; i < lista.size(); i++) {
             modeloTabla.addRow(new Object[columnas]);
@@ -135,10 +115,9 @@ public class personaControlador {
             vista.getTabla().setValueAt(lista.get(i).getDomicilio(), i, 4);
             vista.getTabla().setValueAt(lista.get(i).getTelefono(), i, 5);
             vista.getTabla().setValueAt(lista.get(i).getSexo(), i, 6);
-            
 
         }
-        
+
     }
 
     private void insertarPersona() {
@@ -149,17 +128,20 @@ public class personaControlador {
         modelo.setDomicilio(vista.getTxtDomicilio().getText());
         modelo.setTelefono(vista.getTxtCelular().getText());
         modelo.setSexo(vista.getComboSexo().getSelectedItem().toString());
-        modelo.insertar();
-        
-       
 
-        JOptionPane.showMessageDialog(null, "Datos insertados correctamente");
-        System.out.println(modelo.insertar());
-          
+        if (modelo.insertar()) {
+            JOptionPane.showMessageDialog(null, "Datos insertatdos correctamente");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al ingresar datos");
+
+        }
+
         cargarLista();
- 
-}
-    private void guardaractualizacion(){
+
+    }
+
+    private void guardaractualizacion() {
         modelo.setIdpersona(vista.getTxtCedula().getText());
         modelo.setNombres(vista.getTxtNombre().getText());
         modelo.setApellidos(vista.getTxtApellido().getText());
@@ -167,7 +149,8 @@ public class personaControlador {
         modelo.setDomicilio(vista.getTxtDomicilio().getText());
         modelo.setTelefono(vista.getTxtCelular().getText());
         modelo.setSexo(vista.getComboSexo().getSelectedItem().toString());
+
         modelo.actualizar();
-         JOptionPane.showMessageDialog(null, "Datos han sido actualizados correctamente");
+        JOptionPane.showMessageDialog(null, "Datos han sido actualizados correctamente");
     }
-    }
+}
