@@ -36,14 +36,13 @@ public class PersonaDB extends Persona {
             while (rs.next()) {
                 Persona p = new Persona();
 
-                p.setIdpersona(rs.getString("idpersona"));
+               p.setIdpersona(rs.getString("idpersona"));
                 p.setNombres(rs.getString("nombres"));
                 p.setApellidos(rs.getString("apellidos"));
-                p.setFechanacimiento(rs.getDate("fechanacimiento"));
+                p.setCorreo(rs.getString("correo"));
+                p.setDomicilio(rs.getString("domicilio"));
                 p.setTelefono(rs.getString("telefono"));
                 p.setSexo(rs.getString("sexo"));
-                p.setSueldo(rs.getDouble("sueldo"));
-                p.setCupo(rs.getInt("cupo"));
                 listaPersonas.add(p);
 
             }
@@ -57,10 +56,9 @@ public class PersonaDB extends Persona {
 
     public boolean insertar() {
 
-        String sql = "INSERT INTO \"Persona\"(idpersona,nombres,apellidos,fechanacimiento,telefono,sexo,sueldo,cupo)";
+        String sql = "INSERT INTO \"Persona\"(idpersona,nombres,apellidos,correo,domicilio,telefono,sexo)";
         sql += " VALUES ";
-        sql += " ('" + getIdpersona() + "','" + getNombres() + "','" + getApellidos() + "','" + getFechanacimiento() + "','" + getTelefono() + "','" + getSexo() + "','" + getSueldo() + "','" + getCupo()
-                + "')";
+        sql += " ('" + getIdpersona() + "','" + getNombres() + "','" + getApellidos() + "','" + getCorreo() + "','" + getDomicilio() + "','" + getTelefono()+  "','" + getSexo() + "')";
         if (conecta.noquery(sql) == null) {
             return true;
         } else {
@@ -73,11 +71,10 @@ public class PersonaDB extends Persona {
 
         sql += "nombres='" + getNombres() + "'";
         sql += ", apellidos='" + getApellidos() + "'";
-        sql += ", fechanacimiento='" + getFechanacimiento() + "'";
-        sql += ", telefono= '" + getTelefono() + "'";
-        sql += ", sexo='" + getSexo() + "'";
-        sql += ", sueldo=" + getSueldo();
-        sql += ", cupo=" + getCupo();
+        sql += ", correo='" + getCorreo() + "'";
+        sql += ", domicilio= '" + getDomicilio() + "'";
+        sql += ", telefono='" + getTelefono()+  "'";
+        sql += ", sexo=" + getSexo();
         sql += "WHERE idpersona = '" + getIdpersona() + "' ";
 
         if (conecta.noquery(sql) == null) {
@@ -95,14 +92,13 @@ public class PersonaDB extends Persona {
             while (rs.next()) {
                 Persona p = new Persona();
 
-                p.setIdpersona(rs.getString("idpersona"));
+               p.setIdpersona(rs.getString("idpersona"));
                 p.setNombres(rs.getString("nombres"));
                 p.setApellidos(rs.getString("apellidos"));
-                p.setFechanacimiento(rs.getDate("fechanacimiento"));
+                p.setCorreo(rs.getString("correo"));
+                p.setDomicilio(rs.getString("domicilio"));
                 p.setTelefono(rs.getString("telefono"));
                 p.setSexo(rs.getString("sexo"));
-                p.setSueldo(rs.getDouble("sueldo"));
-                p.setCupo(rs.getInt("cupo"));
                 listaPersonas.add(p);
 
             }
@@ -125,11 +121,10 @@ public class PersonaDB extends Persona {
                 p.setIdpersona(rs.getString("idpersona"));
                 p.setNombres(rs.getString("nombres"));
                 p.setApellidos(rs.getString("apellidos"));
-                p.setFechanacimiento(rs.getDate("fechanacimiento"));
+                p.setCorreo(rs.getString("correo"));
+                p.setDomicilio(rs.getString("domicilio"));
                 p.setTelefono(rs.getString("telefono"));
                 p.setSexo(rs.getString("sexo"));
-                p.setSueldo(rs.getDouble("sueldo"));
-                p.setCupo(rs.getInt("cupo"));
                 listaPersonas.add(p);
 
             }
@@ -178,20 +173,5 @@ public class PersonaDB extends Persona {
         }
     }
 
-    public boolean insertarfoto() {
-        String sql = "INSERT INTO \"Persona\"(idpersona,nombres,apellidos,fechanacimiento,telefono,sexo,sueldo,cupo,foto)";
-        sql += "VALUES";
-        sql += " ('" + getIdpersona() + "','" + getNombres() + "','" + getApellidos() + "','" + getFechanacimiento() + "','" + getTelefono() + "','" + getSexo() + "','" + getSueldo() + "','" + getCupo() + "',?)";
-
-        PreparedStatement ps = conecta.getPs(sql);
-
-        try {
-            ps.setBinaryStream(1, getFile(), getLogBytes());
-            conecta.noquery(ps);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonaDB.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-    }
+    
 }
