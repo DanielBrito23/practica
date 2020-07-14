@@ -7,8 +7,8 @@ package modelo;
 
 /**
  *
- * @author LENOVO
+ * @author Usuario
  */
-public class personaModelo {
+public class PersonaDB {
     
 }
