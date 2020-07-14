@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
  *
  * @author LENOVO
  */
-public class personaModelo {
+public class Persona {
 
     private String idpersona;
     private String nombres;
@@ -24,10 +24,10 @@ public class personaModelo {
     private String celular;
     private String sexo;
 
-    public personaModelo() {
+    public Persona() {
     }
 
-    public personaModelo(String idpersona, String nombres, String apellidos, String telefono, String correo, String domicilio, String celular, String sexo) {
+    public Persona(String idpersona, String nombres, String apellidos, String telefono, String correo, String domicilio, String celular, String sexo) {
         this.idpersona = idpersona;
         this.nombres = nombres;
         this.apellidos = apellidos;
