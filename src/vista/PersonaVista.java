@@ -39,14 +39,14 @@ public class PersonaVista extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblIngresarPersona = new javax.swing.JLabel();
+        lblCedula = new javax.swing.JLabel();
+        lblPersona = new javax.swing.JLabel();
+        lblApellido = new javax.swing.JLabel();
+        lblCorreo = new javax.swing.JLabel();
+        lblDomicilio = new javax.swing.JLabel();
+        lblCelular = new javax.swing.JLabel();
+        lblSexo = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
@@ -76,21 +76,21 @@ public class PersonaVista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ingresar Persona.");
+        lblIngresarPersona.setText("Ingresar Persona.");
 
-        jLabel2.setText("Cedula:");
+        lblCedula.setText("Cedula:");
 
-        jLabel3.setText("Nombre");
+        lblPersona.setText("Nombre");
 
-        jLabel4.setText("Apellido");
+        lblApellido.setText("Apellido");
 
-        jLabel5.setText("Correo:");
+        lblCorreo.setText("Correo:");
 
-        jLabel6.setText("Domicilio:");
+        lblDomicilio.setText("Domicilio:");
 
-        jLabel7.setText("Celular");
+        lblCelular.setText("Celular");
 
-        jLabel8.setText("Sexo");
+        lblSexo.setText("Sexo");
 
         txtCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +109,11 @@ public class PersonaVista extends javax.swing.JFrame {
         txtCelular.setText(" ");
 
         comboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Hombre", "Mujer", "" }));
+        comboSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSexoActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -145,13 +150,13 @@ public class PersonaVista extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addGap(274, 274, 274)
-                                    .addComponent(jLabel1)
+                                    .addComponent(lblIngresarPersona)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addContainerGap()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel4))
+                                        .addComponent(lblCedula)
+                                        .addComponent(lblApellido))
                                     .addGap(48, 48, 48)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -169,9 +174,9 @@ public class PersonaVista extends javax.swing.JFrame {
                                                 .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel3)
-                                                .addComponent(jLabel5)
-                                                .addComponent(jLabel7))
+                                                .addComponent(lblPersona)
+                                                .addComponent(lblCorreo)
+                                                .addComponent(lblCelular))
                                             .addGap(67, 67, 67)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,8 +186,8 @@ public class PersonaVista extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))))
+                            .addComponent(lblDomicilio)
+                            .addComponent(lblSexo))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -190,30 +195,30 @@ public class PersonaVista extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblIngresarPersona)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblCedula)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblPersona))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblApellido)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblCorreo)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblDomicilio)
                     .addComponent(txtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(lblCelular))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(lblSexo)
                     .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -247,6 +252,10 @@ public class PersonaVista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void comboSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSexoActionPerformed
+
     public JButton getBtnEditar() {
         return btnEditar;
     }
@@ -279,68 +288,68 @@ public class PersonaVista extends javax.swing.JFrame {
         this.comboSexo = comboSexo;
     }
 
-    public JLabel getjLabel1() {
-        return jLabel1;
+    public JLabel getLblApellido() {
+        return lblApellido;
     }
 
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
+    public void setLblApellido(JLabel lblApellido) {
+        this.lblApellido = lblApellido;
     }
 
-    public JLabel getjLabel2() {
-        return jLabel2;
+    public JLabel getLblCedula() {
+        return lblCedula;
     }
 
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
+    public void setLblCedula(JLabel lblCedula) {
+        this.lblCedula = lblCedula;
     }
 
-    public JLabel getjLabel3() {
-        return jLabel3;
+    public JLabel getLblCelular() {
+        return lblCelular;
     }
 
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
+    public void setLblCelular(JLabel lblCelular) {
+        this.lblCelular = lblCelular;
     }
 
-    public JLabel getjLabel4() {
-        return jLabel4;
+    public JLabel getLblCorreo() {
+        return lblCorreo;
     }
 
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
+    public void setLblCorreo(JLabel lblCorreo) {
+        this.lblCorreo = lblCorreo;
     }
 
-    public JLabel getjLabel5() {
-        return jLabel5;
+    public JLabel getLblDomicilio() {
+        return lblDomicilio;
     }
 
-    public void setjLabel5(JLabel jLabel5) {
-        this.jLabel5 = jLabel5;
+    public void setLblDomicilio(JLabel lblDomicilio) {
+        this.lblDomicilio = lblDomicilio;
     }
 
-    public JLabel getjLabel6() {
-        return jLabel6;
+    public JLabel getLblIngresarPersona() {
+        return lblIngresarPersona;
     }
 
-    public void setjLabel6(JLabel jLabel6) {
-        this.jLabel6 = jLabel6;
+    public void setLblIngresarPersona(JLabel lblIngresarPersona) {
+        this.lblIngresarPersona = lblIngresarPersona;
     }
 
-    public JLabel getjLabel7() {
-        return jLabel7;
+    public JLabel getLblPersona() {
+        return lblPersona;
     }
 
-    public void setjLabel7(JLabel jLabel7) {
-        this.jLabel7 = jLabel7;
+    public void setLblPersona(JLabel lblPersona) {
+        this.lblPersona = lblPersona;
     }
 
-    public JLabel getjLabel8() {
-        return jLabel8;
+    public JLabel getLblSexo() {
+        return lblSexo;
     }
 
-    public void setjLabel8(JLabel jLabel8) {
-        this.jLabel8 = jLabel8;
+    public void setLblSexo(JLabel lblSexo) {
+        this.lblSexo = lblSexo;
     }
 
     public JPanel getjPanel1() {
@@ -480,19 +489,19 @@ public class PersonaVista extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> comboSexo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblCelular;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblDomicilio;
+    private javax.swing.JLabel lblIngresarPersona;
+    private javax.swing.JLabel lblPersona;
+    private javax.swing.JLabel lblSexo;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
