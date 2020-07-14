@@ -16,6 +16,7 @@ public class PracTap {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println("mensaje de prueba");
     }
     
 }
