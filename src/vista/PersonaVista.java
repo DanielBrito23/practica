@@ -60,6 +60,7 @@ public class PersonaVista extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
+        btn_guardaredicion = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,6 +137,8 @@ public class PersonaVista extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tabla);
 
+        btn_guardaredicion.setText("guardar edicion");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,6 +164,8 @@ public class PersonaVista extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                             .addGap(0, 0, Short.MAX_VALUE)
+                                            .addComponent(btn_guardaredicion)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(btnGuardar)
                                             .addGap(18, 18, 18)
                                             .addComponent(btnEditar)
@@ -224,7 +229,8 @@ public class PersonaVista extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
                     .addComponent(btnEliminar)
-                    .addComponent(btnGuardar))
+                    .addComponent(btnGuardar)
+                    .addComponent(btn_guardaredicion))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -318,6 +324,14 @@ public class PersonaVista extends javax.swing.JFrame {
 
     public void setLblCorreo(JLabel lblCorreo) {
         this.lblCorreo = lblCorreo;
+    }
+
+    public JButton getBtn_guardaredicion() {
+        return btn_guardaredicion;
+    }
+
+    public void setBtn_guardaredicion(JButton btn_guardaredicion) {
+        this.btn_guardaredicion = btn_guardaredicion;
     }
 
     public JLabel getLblDomicilio() {
@@ -488,6 +502,7 @@ public class PersonaVista extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btn_guardaredicion;
     private javax.swing.JComboBox<String> comboSexo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

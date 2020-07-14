@@ -24,9 +24,12 @@ public class PersonaDB extends Persona {
     public PersonaDB() {
     }
 
-    public PersonaDB(String idpersona, String nombres, String apellidos, String telefono, String correo, String domicilio, String celular, String sexo) {
-        super(idpersona, nombres, apellidos, telefono, correo, domicilio, celular, sexo);
+    public PersonaDB(String idpersona, String nombres, String apellidos, String correo, String domicilio, String telefono, String sexo) {
+        super(idpersona, nombres, apellidos, correo, domicilio, telefono, sexo);
     }
+
+  
+   
 
     public List<Persona> listaPersonas() {
         List<Persona> listaPersonas = new ArrayList<Persona>();
@@ -36,13 +39,13 @@ public class PersonaDB extends Persona {
             while (rs.next()) {
                 Persona p = new Persona();
 
-               p.setIdpersona(rs.getString("idpersona"));
+                p.setIdpersona(rs.getString("idpersona"));
                 p.setNombres(rs.getString("nombres"));
                 p.setApellidos(rs.getString("apellidos"));
                 p.setCorreo(rs.getString("correo"));
-                p.setDomicilio(rs.getString("domicilio"));
-                p.setTelefono(rs.getString("telefono"));
-                p.setSexo(rs.getString("sexo"));
+               p.setDomicilio(rs.getString("domicilio"));
+              p.setTelefono(rs.getString("telefono"));
+              p.setSexo(rs.getString("sexo"));
                 listaPersonas.add(p);
 
             }
@@ -84,83 +87,11 @@ public class PersonaDB extends Persona {
         }
     }
 
-    public List<Persona> buscar_Id(String cedula) {
-        List<Persona> listaPersonas = new ArrayList<Persona>();
-        String sql = "SELECT * FROM \"Persona\" WHERE idpersona LIKE '%" + cedula + "%' ";
-        ResultSet rs = conecta.query(sql);
-        try {
-            while (rs.next()) {
-                Persona p = new Persona();
+   
 
-               p.setIdpersona(rs.getString("idpersona"));
-                p.setNombres(rs.getString("nombres"));
-                p.setApellidos(rs.getString("apellidos"));
-                p.setCorreo(rs.getString("correo"));
-                p.setDomicilio(rs.getString("domicilio"));
-                p.setTelefono(rs.getString("telefono"));
-                p.setSexo(rs.getString("sexo"));
-                listaPersonas.add(p);
+  
 
-            }
-            rs.close();
-            return listaPersonas;
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonaDB.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
-    public List<Persona> buscar_Nombre(String nombre) {
-        List<Persona> listaPersonas = new ArrayList<Persona>();
-        String sql = "SELECT * FROM \"Persona\" WHERE nombres LIKE '%" + nombre + "%' ";
-        ResultSet rs = conecta.query(sql);
-        try {
-            while (rs.next()) {
-                Persona p = new Persona();
-
-                p.setIdpersona(rs.getString("idpersona"));
-                p.setNombres(rs.getString("nombres"));
-                p.setApellidos(rs.getString("apellidos"));
-                p.setCorreo(rs.getString("correo"));
-                p.setDomicilio(rs.getString("domicilio"));
-                p.setTelefono(rs.getString("telefono"));
-                p.setSexo(rs.getString("sexo"));
-                listaPersonas.add(p);
-
-            }
-            rs.close();
-            return listaPersonas;
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonaDB.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
-    public List<Persona> buscar_Apellido(String apellido) {
-        List<Persona> listaPersonas = new ArrayList<Persona>();
-        String sql = "SELECT * FROM \"Persona\" WHERE apellidos LIKE '%" + apellido + "%' ";
-        ResultSet rs = conecta.query(sql);
-        try {
-            while (rs.next()) {
-                Persona p = new Persona();
-                p.setIdpersona(rs.getString("idpersona"));
-                p.setNombres(rs.getString("nombres"));
-                p.setApellidos(rs.getString("apellidos"));
-                p.setCorreo(rs.getString("correo"));
-                p.setDomicilio(rs.getString("domicilio"));
-                p.setTelefono(rs.getString("telefono"));
-                p.setSexo(rs.getString("sexo"));
-                listaPersonas.add(p);
-
-            }
-            rs.close();
-            return listaPersonas;
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonaDB.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
+  
     public boolean eliminar(String cod) {
 
         String sql = "DELETE FROM  \"Persona\" WHERE idpersona = '" + cod

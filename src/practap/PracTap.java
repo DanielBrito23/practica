@@ -5,6 +5,10 @@
  */
 package practap;
 
+import controlador.personaControlador;
+import modelo.PersonaDB;
+import vista.PersonaVista;
+
 /**
  *
  * @author LENOVO
@@ -16,9 +20,10 @@ public class PracTap {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("mensaje de prueba");
-        System.out.println("integrante 2");
-        System.out.println("integrante 3");
+           PersonaDB modelo= new PersonaDB();
+            PersonaVista vista= new PersonaVista();
+            personaControlador c = new personaControlador(modelo, vista);
+            c.iniciaControl();
     }
     
 }

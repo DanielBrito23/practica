@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author Asus
  */
 public class pgConect {
-        private final static String cadenaConexion = "jdbc:postgresql://database-1.cmcd0p4ioiqd.us-east-1.rds.amazonaws.com:5432/AWSdatabase";
+        private final static String cadenaConexion = "jdbc:postgresql://database-1.cmcd0p4ioiqd.us-east-1.rds.amazonaws.com:5432/awsdata1";
     private final static String pgusuario = "postgres";
     private final static String pgpass = "12345678";
     

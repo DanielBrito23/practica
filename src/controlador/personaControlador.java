@@ -65,19 +65,21 @@ public class personaControlador {
         vista.getBtnGuardar().addActionListener(e-> insertarPersona());
         vista.getBtnEditar().addActionListener(e-> Editar());
         vista.getBtnEliminar().addActionListener(e-> eliminador());
+        vista.getBtn_guardaredicion().addActionListener(e-> guardaractualizacion());
+        cargarLista();
     }
 
 
     
 
     public void eliminador() {
-        int fila_seleccionada = vista.getjTable1().getSelectedRow();
+        int fila_seleccionada = vista.getTabla().getSelectedRow();
         if (fila_seleccionada == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila");
         } else {
             int i = JOptionPane.showConfirmDialog(null, "Seguro de hacer eliminar el registro", "ELIMINAR", JOptionPane.YES_NO_CANCEL_OPTION);
             if (i == 0) {
-                String codigo = String.valueOf(vista.getjTable1().getValueAt(fila_seleccionada, 0));
+                String codigo = String.valueOf(vista.getTabla().getValueAt(fila_seleccionada, 0));
                 modelo.eliminar(codigo);
                 JOptionPane.showMessageDialog(null, "Registro Eliminado");
 
@@ -93,17 +95,19 @@ public class personaControlador {
 
     private void Editar() {
         
-            int fila_seleccionada = vista.getjTable1().getSelectedRow();
+            int fila_seleccionada = vista.getTabla().getSelectedRow();
             if (fila_seleccionada == -1) {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila");
             } else {
 
-                vista.getTxtCedula().setText((String) vista.getjTable1().getValueAt(fila_seleccionada, 0));
-                vista.getTxtNombre().setText((String) vista.getjTable1().getValueAt(fila_seleccionada, 1));
-                vista.getTxtApellido().setText((String) vista.getjTable1().getValueAt(fila_seleccionada, 2));
-               vista.getTxtCorreo().setText((String) vista.getjTable1().getValueAt(fila_seleccionada, 3));
-                vista.getTxtDomicilio().setText((String) vista.getjTable1().getValueAt(fila_seleccionada, 4));
-              vista.getComboSexo().addItem((String) vista.getjTable1().getValueAt(fila_seleccionada, 5));
+                vista.getTxtCedula().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 0));
+                vista.getTxtNombre().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 1));
+                vista.getTxtApellido().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 2));
+               vista.getTxtCorreo().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 3));
+                vista.getTxtDomicilio().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 4));
+                 vista.getTxtCelular().setText((String) vista.getTabla().getValueAt(fila_seleccionada, 5));
+              vista.getComboSexo().addItem((String) vista.getTabla().getValueAt(fila_seleccionada, 6));
+              
                
             }
             cargarLista();
@@ -116,21 +120,21 @@ public class personaControlador {
 
     private void cargarLista() {
         DefaultTableModel modeloTabla;
-        modeloTabla = (DefaultTableModel) vista.getjTable1().getModel();
-        for (int i = vista.getjTable1().getRowCount() - 1; i >= 0; i--) {
+        modeloTabla = (DefaultTableModel) vista.getTabla().getModel();
+        for (int i = vista.getTabla().getRowCount() - 1; i >= 0; i--) {
             modeloTabla.removeRow(i);
         }
             List<Persona> lista = modelo.listaPersonas();
         int columnas = modeloTabla.getColumnCount();
         for (int i = 0; i < lista.size(); i++) {
             modeloTabla.addRow(new Object[columnas]);
-            vista.getjTable1().setValueAt(lista.get(i).getIdpersona(), i, 0);
-            vista.getjTable1().setValueAt(lista.get(i).getNombres(), i, 1);
-            vista.getjTable1().setValueAt(lista.get(i).getApellidos(), i, 2);
-            vista.getjTable1().setValueAt(lista.get(i).getCorreo(), i, 3);
-            vista.getjTable1().setValueAt(lista.get(i).getDomicilio(), i, 4);
-            vista.getjTable1().setValueAt(lista.get(i).getTelefono(), i, 5);
-            vista.getjTable1().setValueAt(lista.get(i).getSexo(), i, 6);
+            vista.getTabla().setValueAt(lista.get(i).getIdpersona(), i, 0);
+            vista.getTabla().setValueAt(lista.get(i).getNombres(), i, 1);
+            vista.getTabla().setValueAt(lista.get(i).getApellidos(), i, 2);
+            vista.getTabla().setValueAt(lista.get(i).getCorreo(), i, 3);
+            vista.getTabla().setValueAt(lista.get(i).getDomicilio(), i, 4);
+            vista.getTabla().setValueAt(lista.get(i).getTelefono(), i, 5);
+            vista.getTabla().setValueAt(lista.get(i).getSexo(), i, 6);
             
 
         }
@@ -144,17 +148,26 @@ public class personaControlador {
         modelo.setCorreo(vista.getTxtCorreo().getText());
         modelo.setDomicilio(vista.getTxtDomicilio().getText());
         modelo.setTelefono(vista.getTxtCelular().getText());
-        modelo.setSexo(vista.getComboSexo().toString());
+        modelo.setSexo(vista.getComboSexo().getSelectedItem().toString());
+        modelo.insertar();
+        
        
 
-       
-        } 
-    
-  
-    
-        
-        
-    
-    
-  
+        JOptionPane.showMessageDialog(null, "Datos insertados correctamente");
+        System.out.println(modelo.insertar());
+          
+        cargarLista();
+ 
 }
+    private void guardaractualizacion(){
+        modelo.setIdpersona(vista.getTxtCedula().getText());
+        modelo.setNombres(vista.getTxtNombre().getText());
+        modelo.setApellidos(vista.getTxtApellido().getText());
+        modelo.setCorreo(vista.getTxtCorreo().getText());
+        modelo.setDomicilio(vista.getTxtDomicilio().getText());
+        modelo.setTelefono(vista.getTxtCelular().getText());
+        modelo.setSexo(vista.getComboSexo().getSelectedItem().toString());
+        modelo.actualizar();
+         JOptionPane.showMessageDialog(null, "Datos han sido actualizados correctamente");
+    }
+    }

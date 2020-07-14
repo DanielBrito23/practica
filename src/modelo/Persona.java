@@ -18,23 +18,21 @@ public class Persona {
     private String idpersona;
     private String nombres;
     private String apellidos;
-    private String telefono;
-    private String correo;
+     private String correo;
     private String domicilio;
-    private String celular;
+    private String telefono;
     private String sexo;
 
     public Persona() {
     }
 
-    public Persona(String idpersona, String nombres, String apellidos, String telefono, String correo, String domicilio, String celular, String sexo) {
+    public Persona(String idpersona, String nombres, String apellidos, String correo, String domicilio, String telefono, String sexo) {
         this.idpersona = idpersona;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.telefono = telefono;
         this.correo = correo;
         this.domicilio = domicilio;
-        this.celular = celular;
+        this.telefono = telefono;
         this.sexo = sexo;
     }
 
@@ -62,14 +60,6 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -86,12 +76,12 @@ public class Persona {
         this.domicilio = domicilio;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getSexo() {
@@ -102,4 +92,5 @@ public class Persona {
         this.sexo = sexo;
     }
 
+   
 }
