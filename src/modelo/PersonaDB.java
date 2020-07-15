@@ -76,11 +76,10 @@ public class PersonaDB extends Persona {
         sql += ", apellidos='" + getApellidos() + "'";
         sql += ", correo='" + getCorreo() + "'";
         sql += ", domicilio= '" + getDomicilio() + "'";
-        sql += ", telefono='" + getTelefono() ;
-        sql += ", sexo=" + getSexo()+ "'";
+        sql += ", telefono='" + getTelefono() + "'" ;
+        sql += ", sexo=" + getSexo() + "'";
         sql += "WHERE idpersona = '" + getIdpersona() + "' ";
-
-        if (conecta.noquery(sql) == null) {
+         if (conecta.noquery(sql) == null) {
             return true;
         } else {
             return false;

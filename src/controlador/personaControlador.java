@@ -137,8 +137,23 @@ public class personaControlador {
 
         }
 
-        cargarLista();
-
+// if (vista.getBtnGuardar().getText().contentEquals("Crear")) {
+//
+//            if (modelo.insertar()) {
+//                JOptionPane.showMessageDialog(null, "Datos insertatdos correctamente");
+//              
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Error al ingresar datos");
+//
+//            }
+//        } else {
+//            if (modelo.actualizar()) {
+//                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+//                
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Error al actualizar datos");
+//            }
+//        } cargarLista();
     }
 
     private void guardaractualizacion() {
@@ -149,8 +164,9 @@ public class personaControlador {
         modelo.setDomicilio(vista.getTxtDomicilio().getText());
         modelo.setTelefono(vista.getTxtCelular().getText());
         modelo.setSexo(vista.getComboSexo().getSelectedItem().toString());
-
+        System.out.println(modelo.actualizar());
         modelo.actualizar();
+        System.out.println(modelo.actualizar());
         JOptionPane.showMessageDialog(null, "Datos han sido actualizados correctamente");
     }
 }
